@@ -29,8 +29,8 @@ public class BacktrackingExample {
         k = Integer.parseInt(input);
         inequalitySigns = br.readLine().split(" ");
 
-        maxResult = new int[k+1];
-        minResult = new int[k+1];
+        maxResult = new int[k + 1];
+        minResult = new int[k + 1];
         visited = new boolean[10];
 
         DFSMax(0);
@@ -39,32 +39,32 @@ public class BacktrackingExample {
 
         DFSMin(0);
 
-        for(int i = 0; i < maxResult.length; i++){
+        for (int i = 0; i < maxResult.length; i++) {
             System.out.print(maxResult[i]);
         }
 
         System.out.println();
 
-        for(int i = 0; i < minResult.length; i++){
+        for (int i = 0; i < minResult.length; i++) {
             System.out.print(minResult[i]);
         }
     }
 
     public static void DFSMax(int depth) {
         // 끝나는 조건 (모든 수를 다 찾았으면 종료)
-        if(depth == k+1){
+        if (depth == k + 1) {
             isFound = true;
             return;
         }
 
-        for(int i = 9; i >= 0; i--){
-            if(isFound) return;
+        for (int i = 9; i >= 0; i--) {
+            if (isFound) return;
 
-            if(!visited[i]) {
+            if (!visited[i]) {
                 maxResult[depth] = i;
-                if(isRight(depth, maxResult)) {
+                if (isRight(depth, maxResult)) {
                     visited[i] = true;
-                    DFSMax(depth+1);
+                    DFSMax(depth + 1);
                     visited[i] = false;
                 }
             }
@@ -73,19 +73,19 @@ public class BacktrackingExample {
 
     public static void DFSMin(int depth) {
         // 끝나는 조건 (모든 수를 다 찾았으면 종료)
-        if(depth == k+1){
+        if (depth == k + 1) {
             isFound = true;
             return;
         }
 
-        for(int i = 0; i < 10; i++){
-            if(isFound) return;
+        for (int i = 0; i < 10; i++) {
+            if (isFound) return;
 
-            if(!visited[i]) {
+            if (!visited[i]) {
                 minResult[depth] = i;
-                if(isRight(depth, minResult)) {
+                if (isRight(depth, minResult)) {
                     visited[i] = true;
-                    DFSMin(depth+1);
+                    DFSMin(depth + 1);
                     visited[i] = false;
                 }
             }
@@ -98,13 +98,13 @@ public class BacktrackingExample {
     // inequalitySigns = [">"]
     // maxResult[depth]와 maxResult[depth - 1]의 값이 inequalitySigns[depth -1]을 만족하는가?
     //
-    public static boolean isRight(int depth, int[] result){
-        if(depth == 0) return true;
+    public static boolean isRight(int depth, int[] result) {
+        if (depth == 0) return true;
 
         int right = result[depth];
         int left = result[depth - 1];
 
-        if(inequalitySigns[depth-1].equals(">")){
+        if (inequalitySigns[depth - 1].equals(">")) {
             return left > right;
         } else {
             return left < right;
