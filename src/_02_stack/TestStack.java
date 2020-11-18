@@ -43,17 +43,16 @@ public class TestStack {
 		System.out.println("==========================================");
 		
 		/**
-		 * Collection Framework���� �����ϴ� Stack
-		 * 1. Stack class : Thread safe(�����忡 �����ϴ�)
-		 * 2. LinkedList class : Thread unsafe(�����忡 �Ҿ����ϴ�)
+		 * Collection Framework에서 제공하는 Stack
+		 * 1. Stack class : Thread safe(쓰레드에 안전하다.)
+		 * 2. LinkedList class : Thread unsafe(쓰레드에 불안전하다.)
 		 * 
-		 * Process : ���� ���� ���α׷�[Code����, Data����(static, final), Heap����(��ü/new()) + Thread(���� Stack ����)
-		 * Thread : �ϳ��� ���μ������� ���������� �����ϴ� ���α׷��� ���� �帧
-		 * 	- Multi Thread ȯ�濡���� �����Ǵ� ������ ����(Heap)���� ����ġ ���� ������ ��Ÿ�� �� �ִ�.
-		 * 	- �̸� ������ �� �ִ� ������� �ִµ�, �� �߿��� Java�� Synchronize��� ����� ����Ѵ�.
-		 * 	- Synchronized�� ����� ��ü�� thread-safe �ϴٰ� ǥ���Ѵ�.
-		 * 
-		 * 	�ڵ��׽�Ʈ������ ������!! LinkedList�� ����Ѵ�.
+		 * Process : 실행 중인 프로그램 [Code영역, Data영역(static, final), Heap영역(객체/new()) + Thread(개별 Stack 영역)
+		 * Thread : 하나의 프로세스에서 독립적으로 동작하는 프로그램의 실행 흐름
+		 * 	- Multi Thread 환경에서는 공유되는 데이터 영역(heap)에서 예기치 못한 현상이 나타날 수 있다.
+		 * 	- 이를 막아줄 수 있는 기술들이 있는데, 그 중에서 Java는 Synchronize라는 기술을 사용한다.
+		 * 	- Synchronized가 적용된 객체는 thread-safe 하다고 부른다.
+		 *
 		 */
 		
 		Stack<Integer> stack = new Stack<>();
